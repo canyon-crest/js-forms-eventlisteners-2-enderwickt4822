@@ -29,6 +29,12 @@
 //
 //         Example: "hello" → "HELLO!"
 
+let btn = document.getElementById("btnShout");
+
+btn.addEventListener("click", function() {
+    let shoutInput = document.getElementById("shoutInput").value;
+    document.getElementById("outShout").innerHTML = shoutInput.toUpperCase() + "!";
+})
 
 // ============================================
 //  MAIN: Pizza Builder
@@ -39,6 +45,56 @@
 //   - Toppings (checkboxes): $0.50 each
 //   - Service (dropdown): Dine In $0, Take Out $1.50,
 //     Delivery $3.00
+let calcBtn = document.getElementById("btnCalc");
+
+calcBtn.addEventListener("click", function(){
+    let num = 0;
+    
+    let rg = document.getElementsByName("rg");
+
+    if (rg != null) {
+        for (let i = 0; i < rg.length; i++) {
+            if (rg[i].checked) {
+              num = parseFloat(rg[i].value);
+            }
+        }   
+    }
+    
+   
+    let cbCount = 0;
+    let cb = document.getElementsByName("cb");
+    if (cb != null) {
+        for (let i = 0; i < cb.length; i++) {
+        if (cb[i].checked) {
+            cbCount++;
+        }
+    }
+    }
+
+    let tipT = document.getElementById("serviceSelect").value;
+    let a = 0;
+
+    if (tipT == "dinein") {
+        a=0;
+    } else if (tipT == "takeout") {
+        a=1.5;
+    } else if (tipT =="delivery") {
+        a = 3;
+    }
+
+    let total = num + cbCount + a;
+
+    document.getElementById("myPara").innerHTML =total + "";
+
+    let name = document.getElementById("myInput").value;
+    if (name == "") {
+        name = "Customer"
+    }
+
+    document.getElementById("myPara").innerHTML = name + ", your total is $" + total.toFixed(2);
+})
+
+
 
 // STEP 3: Get the "Calculate Total" button by ID ("btnCalc")
 //         Add a click event listener.
