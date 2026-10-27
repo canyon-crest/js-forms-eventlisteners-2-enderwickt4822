@@ -66,7 +66,7 @@ calcBtn.addEventListener("click", function(){
     if (cb != null) {
         for (let i = 0; i < cb.length; i++) {
         if (cb[i].checked) {
-            cbCount++;
+            cbCount+=0.5;
         }
     }
     }
@@ -139,3 +139,15 @@ calcBtn.addEventListener("click", function(){
 //         c) Uncheck ALL topping checkboxes (loop through them)
 //         d) Set the service dropdown value to "dinein"
 //         e) Set the output paragraph innerHTML to ""
+
+document.getElementById("clearBtn").addEventListener("click", function() {
+document.getElementById("myInput").value = "";
+document.getElementById("r3").checked = true;
+let cb = document.getElementsByName("cb");
+for (let i =0; i< cb.length; i++) {
+    cb[i].checked = false;
+}
+document.getElementById("serviceSelect").value = "dinein";
+document.getElementById("myPara").innerHTML = "";
+}) 
+    
